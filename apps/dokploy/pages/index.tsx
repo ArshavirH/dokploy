@@ -133,7 +133,6 @@ export default function Home() {
 	};
 
 	const handleGithubSignIn = async () => {
-		setIsGithubLoading(true);
 		try {
 			const { error } = await authClient.signIn.social({
 				provider: "github",
@@ -147,13 +146,10 @@ export default function Home() {
 			toast.error("An error occurred while signing in with GitHub", {
 				description: error instanceof Error ? error.message : "Unknown error",
 			});
-		} finally {
-			setIsGithubLoading(false);
 		}
 	};
 
 	const handleGoogleSignIn = async () => {
-		setIsGoogleLoading(true);
 		try {
 			const { error } = await authClient.signIn.social({
 				provider: "google",
@@ -167,8 +163,6 @@ export default function Home() {
 			toast.error("An error occurred while signing in with Google", {
 				description: error instanceof Error ? error.message : "Unknown error",
 			});
-		} finally {
-			setIsGoogleLoading(false);
 		}
 	};
 	return (
