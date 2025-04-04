@@ -26,6 +26,7 @@ import {
 	ShieldCheck,
 	Trash2,
 	User,
+	Home,
 	Users,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -146,65 +147,65 @@ const MENU: Menu = {
 	home: [
 		{
 			isSingle: true,
+			title: "Home",
+			url: "/dashboard",
+			icon: Home,
+		},
+		// {
+		// 	isSingle: true,
+		// 	title: "Monitoring",
+		// 	url: "/dashboard/monitoring",
+		// 	icon: BarChartHorizontalBigIcon,
+		// 	// Only enabled in non-cloud environments
+		// 	isEnabled: ({ isCloud }) => !isCloud,
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "Traefik File System",
+		// 	url: "/dashboard/traefik",
+		// 	icon: GalleryVerticalEnd,
+		// 	// Only enabled for admins and users with access to Traefik files in non-cloud environments
+		// 	isEnabled: ({ auth, isCloud }) =>
+		// 		!!(
+		// 			(auth?.role === "owner" || auth?.canAccessToTraefikFiles) &&
+		// 			!isCloud
+		// 		),
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "Docker",
+		// 	url: "/dashboard/docker",
+		// 	icon: BlocksIcon,
+		// 	// Only enabled for admins and users with access to Docker in non-cloud environments
+		// 	isEnabled: ({ auth, isCloud }) =>
+		// 		!!((auth?.role === "owner" || auth?.canAccessToDocker) && !isCloud),
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "Swarm",
+		// 	url: "/dashboard/swarm",
+		// 	icon: PieChart,
+		// 	// Only enabled for admins and users with access to Docker in non-cloud environments
+		// 	isEnabled: ({ auth, isCloud }) =>
+		// 		!!((auth?.role === "owner" || auth?.canAccessToDocker) && !isCloud),
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "Requests",
+		// 	url: "/dashboard/requests",
+		// 	icon: Forward,
+		// 	// Only enabled for admins and users with access to Docker in non-cloud environments
+		// 	isEnabled: ({ auth, isCloud }) =>
+		// 		!!((auth?.role === "owner" || auth?.canAccessToDocker) && !isCloud),
+		// },
+
+		// Legacy unused menu, adjusted to the new structure
+		{
+			isSingle: true,
 			title: "Projects",
 			url: "/dashboard/projects",
 			icon: Folder,
 		},
-		{
-			isSingle: true,
-			title: "Monitoring",
-			url: "/dashboard/monitoring",
-			icon: BarChartHorizontalBigIcon,
-			// Only enabled in non-cloud environments
-			isEnabled: ({ isCloud }) => !isCloud,
-		},
-		{
-			isSingle: true,
-			title: "Traefik File System",
-			url: "/dashboard/traefik",
-			icon: GalleryVerticalEnd,
-			// Only enabled for admins and users with access to Traefik files in non-cloud environments
-			isEnabled: ({ auth, isCloud }) =>
-				!!(
-					(auth?.role === "owner" || auth?.canAccessToTraefikFiles) &&
-					!isCloud
-				),
-		},
-		{
-			isSingle: true,
-			title: "Docker",
-			url: "/dashboard/docker",
-			icon: BlocksIcon,
-			// Only enabled for admins and users with access to Docker in non-cloud environments
-			isEnabled: ({ auth, isCloud }) =>
-				!!((auth?.role === "owner" || auth?.canAccessToDocker) && !isCloud),
-		},
-		{
-			isSingle: true,
-			title: "Swarm",
-			url: "/dashboard/swarm",
-			icon: PieChart,
-			// Only enabled for admins and users with access to Docker in non-cloud environments
-			isEnabled: ({ auth, isCloud }) =>
-				!!((auth?.role === "owner" || auth?.canAccessToDocker) && !isCloud),
-		},
-		{
-			isSingle: true,
-			title: "Requests",
-			url: "/dashboard/requests",
-			icon: Forward,
-			// Only enabled for admins and users with access to Docker in non-cloud environments
-			isEnabled: ({ auth, isCloud }) =>
-				!!((auth?.role === "owner" || auth?.canAccessToDocker) && !isCloud),
-		},
-
-		// Legacy unused menu, adjusted to the new structure
-		// {
-		// 	isSingle: true,
-		// 	title: "Projects",
-		// 	url: "/dashboard/projects",
-		// 	icon: Folder,
-		// },
 		// {
 		// 	isSingle: true,
 		// 	title: "Monitoring",
@@ -256,28 +257,28 @@ const MENU: Menu = {
 	],
 
 	settings: [
-		{
-			isSingle: true,
-			title: "Web Server",
-			url: "/dashboard/settings/server",
-			icon: Activity,
-			// Only enabled for admins in non-cloud environments
-			isEnabled: ({ auth, isCloud }) => !!(auth?.role === "owner" && !isCloud),
-		},
+		// {
+		// 	isSingle: true,
+		// 	title: "Web Server",
+		// 	url: "/dashboard/settings/server",
+		// 	icon: Activity,
+		// 	// Only enabled for admins in non-cloud environments
+		// 	isEnabled: ({ auth, isCloud }) => !!(auth?.role === "owner" && !isCloud),
+		// },
 		{
 			isSingle: true,
 			title: "Profile",
 			url: "/dashboard/settings/profile",
 			icon: User,
 		},
-		{
-			isSingle: true,
-			title: "Remote Servers",
-			url: "/dashboard/settings/servers",
-			icon: Server,
-			// Only enabled for admins
-			isEnabled: ({ auth }) => !!(auth?.role === "owner"),
-		},
+		// {
+		// 	isSingle: true,
+		// 	title: "Remote Servers",
+		// 	url: "/dashboard/settings/servers",
+		// 	icon: Server,
+		// 	// Only enabled for admins
+		// 	isEnabled: ({ auth }) => !!(auth?.role === "owner"),
+		// },
 		{
 			isSingle: true,
 			title: "Users",
@@ -286,64 +287,64 @@ const MENU: Menu = {
 			// Only enabled for admins
 			isEnabled: ({ auth }) => !!(auth?.role === "owner"),
 		},
-		{
-			isSingle: true,
-			title: "SSH Keys",
-			icon: KeyRound,
-			url: "/dashboard/settings/ssh-keys",
-			// Only enabled for admins and users with access to SSH keys
-			isEnabled: ({ auth }) =>
-				!!(auth?.role === "owner" || auth?.canAccessToSSHKeys),
-		},
-		{
-			title: "AI",
-			icon: BotIcon,
-			url: "/dashboard/settings/ai",
-			isSingle: true,
-			isEnabled: ({ auth }) => !!(auth?.role === "owner"),
-		},
-		{
-			isSingle: true,
-			title: "Git",
-			url: "/dashboard/settings/git-providers",
-			icon: GitBranch,
-			// Only enabled for admins and users with access to Git providers
-			isEnabled: ({ auth }) =>
-				!!(auth?.role === "owner" || auth?.canAccessToGitProviders),
-		},
-		{
-			isSingle: true,
-			title: "Registry",
-			url: "/dashboard/settings/registry",
-			icon: Package,
-			// Only enabled for admins
-			isEnabled: ({ auth }) => !!(auth?.role === "owner"),
-		},
-		{
-			isSingle: true,
-			title: "S3 Destinations",
-			url: "/dashboard/settings/destinations",
-			icon: Database,
-			// Only enabled for admins
-			isEnabled: ({ auth }) => !!(auth?.role === "owner"),
-		},
+		// {
+		// 	isSingle: true,
+		// 	title: "SSH Keys",
+		// 	icon: KeyRound,
+		// 	url: "/dashboard/settings/ssh-keys",
+		// 	// Only enabled for admins and users with access to SSH keys
+		// 	isEnabled: ({ auth }) =>
+		// 		!!(auth?.role === "owner" || auth?.canAccessToSSHKeys),
+		// },
+		// {
+		// 	title: "AI",
+		// 	icon: BotIcon,
+		// 	url: "/dashboard/settings/ai",
+		// 	isSingle: true,
+		// 	isEnabled: ({ auth }) => !!(auth?.role === "owner"),
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "Git",
+		// 	url: "/dashboard/settings/git-providers",
+		// 	icon: GitBranch,
+		// 	// Only enabled for admins and users with access to Git providers
+		// 	isEnabled: ({ auth }) =>
+		// 		!!(auth?.role === "owner" || auth?.canAccessToGitProviders),
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "Registry",
+		// 	url: "/dashboard/settings/registry",
+		// 	icon: Package,
+		// 	// Only enabled for admins
+		// 	isEnabled: ({ auth }) => !!(auth?.role === "owner"),
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "S3 Destinations",
+		// 	url: "/dashboard/settings/destinations",
+		// 	icon: Database,
+		// 	// Only enabled for admins
+		// 	isEnabled: ({ auth }) => !!(auth?.role === "owner"),
+		// },
 
-		{
-			isSingle: true,
-			title: "Certificates",
-			url: "/dashboard/settings/certificates",
-			icon: ShieldCheck,
-			// Only enabled for admins
-			isEnabled: ({ auth }) => !!(auth?.role === "owner"),
-		},
-		{
-			isSingle: true,
-			title: "Cluster",
-			url: "/dashboard/settings/cluster",
-			icon: Boxes,
-			// Only enabled for admins in non-cloud environments
-			isEnabled: ({ auth, isCloud }) => !!(auth?.role === "owner" && !isCloud),
-		},
+		// {
+		// 	isSingle: true,
+		// 	title: "Certificates",
+		// 	url: "/dashboard/settings/certificates",
+		// 	icon: ShieldCheck,
+		// 	// Only enabled for admins
+		// 	isEnabled: ({ auth }) => !!(auth?.role === "owner"),
+		// },
+		// {
+		// 	isSingle: true,
+		// 	title: "Cluster",
+		// 	url: "/dashboard/settings/cluster",
+		// 	icon: Boxes,
+		// 	// Only enabled for admins in non-cloud environments
+		// 	isEnabled: ({ auth, isCloud }) => !!(auth?.role === "owner" && !isCloud),
+		// },
 		{
 			isSingle: true,
 			title: "Notifications",
@@ -352,39 +353,39 @@ const MENU: Menu = {
 			// Only enabled for admins
 			isEnabled: ({ auth }) => !!(auth?.role === "owner"),
 		},
-		{
-			isSingle: true,
-			title: "Billing",
-			url: "/dashboard/settings/billing",
-			icon: CreditCard,
-			// Only enabled for admins in cloud environments
-			isEnabled: ({ auth, isCloud }) => !!(auth?.role === "owner" && isCloud),
-		},
+		// {
+		// 	isSingle: true,
+		// 	title: "Billing",
+		// 	url: "/dashboard/settings/billing",
+		// 	icon: CreditCard,
+		// 	// Only enabled for admins in cloud environments
+		// 	isEnabled: ({ auth }) => !!(auth?.role === "owner"),
+		// },
 	],
 
 	help: [
-		{
-			name: "Documentation",
-			url: "https://docs.dokploy.com/docs/core",
-			icon: BookIcon,
-		},
-		{
-			name: "Support",
-			url: "https://discord.gg/2tBnJ3jDJc",
-			icon: CircleHelp,
-		},
-		{
-			name: "Sponsor",
-			url: "https://opencollective.com/dokploy",
-			icon: ({ className }) => (
-				<HeartIcon
-					className={cn(
-						"text-red-500 fill-red-600 animate-heartbeat",
-						className,
-					)}
-				/>
-			),
-		},
+	// 	{
+	// 		name: "Documentation",
+	// 		url: "https://docs.dokploy.com/docs/core",
+	// 		icon: BookIcon,
+	// 	},
+	// 	{
+	// 		name: "Support",
+	// 		url: "https://discord.gg/2tBnJ3jDJc",
+	// 		icon: CircleHelp,
+	// 	},
+	// 	{
+	// 		name: "Sponsor",
+	// 		url: "https://opencollective.com/dokploy",
+	// 		icon: ({ className }) => (
+	// 			<HeartIcon
+	// 				className={cn(
+	// 					"text-red-500 fill-red-600 animate-heartbeat",
+	// 					className,
+	// 				)}
+	// 			/>
+	// 		),
+	// 	},
 	],
 } as const;
 
@@ -539,129 +540,35 @@ function SidebarLogo() {
 				>
 					{/* Organization Logo and Selector */}
 					<SidebarMenuItem className={"w-full"}>
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<SidebarMenuButton
-									size={state === "collapsed" ? "sm" : "lg"}
-									className={cn(
-										"data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground",
-										state === "collapsed" &&
-											"flex justify-center items-center p-2 h-10 w-10 mx-auto",
-									)}
-								>
-									<div
-										className={cn(
-											"flex items-center gap-2",
-											state === "collapsed" && "justify-center",
-										)}
-									>
-										<div
-											className={cn(
-												"flex items-center justify-center rounded-sm border",
-												"size-6",
-											)}
-										>
-											<Logo
-												className={cn(
-													"transition-all",
-													state === "collapsed" ? "size-4" : "size-5",
-												)}
-												logoUrl={activeOrganization?.logo || undefined}
-											/>
-										</div>
-										<div
-											className={cn(
-												"flex flex-col items-start",
-												state === "collapsed" && "hidden",
-											)}
-										>
-											<p className="text-sm font-medium leading-none">
-												{activeOrganization?.name ?? "Select Organization"}
-											</p>
-										</div>
-									</div>
-									<ChevronsUpDown
-										className={cn("ml-auto", state === "collapsed" && "hidden")}
-									/>
-								</SidebarMenuButton>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent
-								className="rounded-lg"
-								align="start"
-								side={isMobile ? "bottom" : "right"}
-								sideOffset={4}
-							>
-								<DropdownMenuLabel className="text-xs text-muted-foreground">
-									Organizations
-								</DropdownMenuLabel>
-								{organizations?.map((org) => (
-									<div className="flex flex-row justify-between" key={org.name}>
-										<DropdownMenuItem
-											onClick={async () => {
-												await authClient.organization.setActive({
-													organizationId: org.id,
-												});
-												window.location.reload();
-											}}
-											className="w-full gap-2 p-2"
-										>
-											<div className="flex flex-col gap-4">{org.name}</div>
-											<div className="flex size-6 items-center justify-center rounded-sm border">
-												<Logo
-													className={cn(
-														"transition-all",
-														state === "collapsed" ? "size-6" : "size-10",
-													)}
-													logoUrl={org.logo ?? undefined}
-												/>
-											</div>
-										</DropdownMenuItem>
-										{org.ownerId === session?.user?.id && (
-											<div className="flex items-center gap-2">
-												<AddOrganization organizationId={org.id} />
-												<DialogAction
-													title="Delete Organization"
-													description="Are you sure you want to delete this organization?"
-													type="destructive"
-													onClick={async () => {
-														await deleteOrganization({
-															organizationId: org.id,
-														})
-															.then(() => {
-																refetch();
-																toast.success(
-																	"Organization deleted successfully",
-																);
-															})
-															.catch((error) => {
-																toast.error(
-																	error?.message ||
-																		"Error deleting organization",
-																);
-															});
-													}}
-												>
-													<Button
-														variant="ghost"
-														size="icon"
-														className="group hover:bg-red-500/10"
-														isLoading={isRemoving}
-													>
-														<Trash2 className="size-4 text-primary group-hover:text-red-500" />
-													</Button>
-												</DialogAction>
-											</div>
-										)}
-									</div>
-								))}
-								{(user?.role === "owner" || isCloud) && (
-									<>
-										<DropdownMenuSeparator />
-										<AddOrganization />
-									</>
+						<SidebarMenuButton
+							size={state === "collapsed" ? "sm" : "lg"}
+							className={cn(
+								"flex items-center gap-2",
+								state === "collapsed" && "justify-center p-2 h-10 w-10 mx-auto"
+							)}
+						>
+							<div
+								className={cn(
+									"flex items-center justify-center rounded-sm border",
+									"size-6"
 								)}
-							</DropdownMenuContent>
-						</DropdownMenu>
+							>
+								<Logo
+									className={cn(
+										"transition-all",
+										state === "collapsed" ? "size-4" : "size-5"
+									)}
+									logoUrl={activeOrganization?.logo || undefined}
+								/>
+							</div>
+							{state !== "collapsed" && (
+								<div className="flex flex-col items-start">
+									<p className="text-sm font-medium leading-none">
+										{activeOrganization?.name ?? "Select Organization"}
+									</p>
+								</div>
+							)}
+						</SidebarMenuButton>
 					</SidebarMenuItem>
 
 					{/* Notification Bell */}
@@ -995,28 +902,6 @@ export default function Page({ children }: Props) {
 							})}
 						</SidebarMenu>
 					</SidebarGroup>
-					<SidebarGroup className="group-data-[collapsible=icon]:hidden">
-						<SidebarGroupLabel>Extra</SidebarGroupLabel>
-						<SidebarMenu>
-							{help.map((item: ExternalLink) => (
-								<SidebarMenuItem key={item.name}>
-									<SidebarMenuButton asChild>
-										<a
-											href={item.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="flex w-full items-center gap-2"
-										>
-											<span className="mr-2">
-												<item.icon className="h-4 w-4" />
-											</span>
-											<span>{item.name}</span>
-										</a>
-									</SidebarMenuButton>
-								</SidebarMenuItem>
-							))}
-						</SidebarMenu>
-					</SidebarGroup>
 				</SidebarContent>
 				<SidebarFooter>
 					<SidebarMenu className="flex flex-col gap-2">
@@ -1028,16 +913,6 @@ export default function Page({ children }: Props) {
 						<SidebarMenuItem>
 							<UserNav />
 						</SidebarMenuItem>
-						{dokployVersion && (
-							<>
-								<div className="px-3 text-xs text-muted-foreground text-center group-data-[collapsible=icon]:hidden">
-									Version {dokployVersion}
-								</div>
-								<div className="hidden text-xs text-muted-foreground text-center group-data-[collapsible=icon]:block">
-									{dokployVersion}
-								</div>
-							</>
-						)}
 					</SidebarMenu>
 				</SidebarFooter>
 				<SidebarRail />
